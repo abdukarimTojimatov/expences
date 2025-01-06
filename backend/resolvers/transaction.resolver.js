@@ -31,11 +31,16 @@ const transactionResolver = {
     //
     createTransaction: async (_, { input }, context) => {
       try {
+        console.log("1");
         const newTransaction = new Transaction({
           ...input,
           userId: context.getUser()._id,
         });
+        console.log("2");
+        console.log("newTransaction", newTransaction);
         await newTransaction.save();
+        console.log("3");
+        return newTransaction;
       } catch (err) {
         console.error("Error creating transaction:", err);
         throw new Error("Error crea");

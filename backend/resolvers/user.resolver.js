@@ -35,6 +35,7 @@ const userResolver = {
         console.log("newUser", newUser);
 
         await newUser.save();
+        console.log("passed here");
         await context.login(newUser);
         return newUser;
       } catch (err) {
